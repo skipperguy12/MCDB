@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @setting.name
+%p
+  %b Values:
+  = @setting.values
+%p
+  %b Defvalue:
+  = @setting.defValue
+%p
+  %b Isplayersetting:
+  = @setting.isPlayerSetting
+%p
+  %b Description:
+  = @setting.description
+%p
+  %b Cluster:
+  = @setting.cluster
+
+= link_to 'Edit', edit_setting_path(@setting)
+\|
+= link_to 'Back', settings_path

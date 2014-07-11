@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @cluster.name
+
+= link_to 'Edit', edit_cluster_path(@cluster)
+\|
+= link_to 'Back', clusters_path

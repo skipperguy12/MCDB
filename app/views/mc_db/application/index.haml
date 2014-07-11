@@ -1,0 +1,12 @@
+- content_for :title, "Admin"
+.row-fluid
+  .col-md-12
+    .page-header
+      %h1 Admin Panel
+.row-fluid
+  .col-md-3
+    %br
+    %ul.nav.nav-list
+      - ["groups","servers","reports"].each do |panel|
+        %li
+          = link_to panel.upcase, root_path + "/" + panel

@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @server.name
+%p
+  %b Ip:
+  = @server.ip
+%p
+  %b Port:
+  = @server.port
+%p
+  %b Publicip:
+  = @server.publicIp
+%p
+  %b Publicport:
+  = @server.publicPort
+%p
+  %b Cluster:
+  = @server.cluster
+%p
+  %b Maxplayers:
+  = @server.maxPlayers
+%p
+  %b Onlineplayers:
+  = @server.onlinePlayers
+%p
+  %b Online:
+  = @server.online
+
+= link_to 'Edit', edit_server_path(@server)
+\|
+= link_to 'Back', servers_path

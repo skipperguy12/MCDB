@@ -1,0 +1,35 @@
+%h1 Listing groups
+
+%table
+  %tr
+    %th Name
+    %th Cluster
+    %th Priority
+    %th Members
+    %th Minecraft permissions
+    %th Website permissions
+    %th Active
+    %th Staff
+    %th Html color
+    %th
+    %th
+    %th
+
+  - @groups.each do |group|
+    %tr
+      %td= group.name
+      %td= group.cluster
+      %td= group.priority
+      %td= group.members
+      %td= group.minecraft_permissions
+      %td= group.website_permissions
+      %td= group.active
+      %td= group.staff
+      %td= group.html_color
+      %td= link_to 'Show', group
+      %td= link_to 'Edit', edit_group_path(group)
+      %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Group', new_group_path

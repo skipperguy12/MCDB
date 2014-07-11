@@ -1,0 +1,3 @@
+module McDb
+  VERSION = "0.0.1"
+end

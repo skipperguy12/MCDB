@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Reason:
+  = @punishment.reason
+%p
+  %b Created:
+  = @punishment.created
+%p
+  %b Expires:
+  = @punishment.expires
+%p
+  %b Type:
+  = @punishment.type
+%p
+  %b Punisher:
+  = @punishment.punisher
+%p
+  %b Punished:
+  = @punishment.punished
+%p
+  %b Appealable:
+  = @punishment.appealable
+%p
+  %b Cluster:
+  = @punishment.cluster
+%p
+  %b Active:
+  = @punishment.active
+
+= link_to 'Edit', edit_punishment_path(@punishment)
+\|
+= link_to 'Back', punishments_path

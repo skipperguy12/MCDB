@@ -1,0 +1,35 @@
+%h1 Listing punishments
+
+%table
+  %tr
+    %th Reason
+    %th Created
+    %th Expires
+    %th Type
+    %th Punisher
+    %th Punished
+    %th Appealable
+    %th Cluster
+    %th Active
+    %th
+    %th
+    %th
+
+  - @punishments.each do |punishment|
+    %tr
+      %td= punishment.reason
+      %td= punishment.created
+      %td= punishment.expires
+      %td= punishment.type
+      %td= punishment.punisher
+      %td= punishment.punished
+      %td= punishment.appealable
+      %td= punishment.cluster
+      %td= punishment.active
+      %td= link_to 'Show', punishment
+      %td= link_to 'Edit', edit_punishment_path(punishment)
+      %td= link_to 'Destroy', punishment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Punishment', new_punishment_path

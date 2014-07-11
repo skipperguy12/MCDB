@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ip: MyString
+  port: 1
+  publicIp: MyString
+  publicPort: 1
+  cluster: MyString
+  maxPlayers: 1
+  onlinePlayers: 
+  online: false
+
+two:
+  name: MyString
+  ip: MyString
+  port: 1
+  publicIp: MyString
+  publicPort: 1
+  cluster: MyString
+  maxPlayers: 1
+  onlinePlayers: 
+  online: false
