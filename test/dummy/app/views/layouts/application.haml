@@ -1,24 +1,23 @@
 !!!
-%html
+%html{lang: "en"}
   %head
+    %meta{charset: "utf-8"}
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
     %title
       - if content_for? :title
         Altitude MapDev &raquo; #{yield :title}
       - else
         Altitude MapDev &raquo; The best MapDev server
-    %title Altitude &raquo; Mapdev
     = favicon_link_tag image_path('favicon.ico'), :rel => 'shortcut icon'
-    = stylesheet_link_tag   "//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css"
-    = stylesheet_link_tag   "application"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
-  %body
-    .container
+    %body
+      %br
       = yield
+    = javascript_include_tag "application"
 
-.container
+.row
   %hr
-  %footer
-    %ul.nav.nav-pills
-      %li.pull-left
-        %a &copy; 2014 Altitude Network
+  %dl.sub-nav
+    %dt &copy; 2014 Altitude Network

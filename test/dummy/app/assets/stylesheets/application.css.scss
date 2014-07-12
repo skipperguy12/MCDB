@@ -9,12 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ //= require foundation_and_overrides
+
+ //= require_tree ./foundation-icons
  */
 
-@import "bootstrap";
 body *:not(i):not(li) {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif !important; 
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif !important;
 }
 
 .console {
