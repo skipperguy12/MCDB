@@ -1,33 +1,65 @@
-%p#notice= notice
-
-%p
-  %b Reason:
-  = @punishment.reason
-%p
-  %b Created:
-  = @punishment.created
-%p
-  %b Expires:
-  = @punishment.expires
-%p
-  %b Type:
-  = @punishment.type
-%p
-  %b Punisher:
-  = @punishment.punisher
-%p
-  %b Punished:
-  = @punishment.punished
-%p
-  %b Appealable:
-  = @punishment.appealable
-%p
-  %b Cluster:
-  = @punishment.cluster
-%p
-  %b Active:
-  = @punishment.active
-
-= link_to 'Edit', edit_punishment_path(@punishment)
-\|
-= link_to 'Back', punishments_path
+.row
+  .large-6.columns.large-centered
+    %h3
+      %i.fi-eye
+        Viewing #{@punishment.punished}'s punishment.
+  .large-6.columns.end.large-centered
+    %ul.button-group
+      %li= link_to  '<i class="fi-pencil large"></i> Edit'.html_safe, edit_punishment_path(@punishment), :class => "button small"
+      %li= link_to  '<i class="fi-trash large"></i> Delete'.html_safe, @punishment, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "button alert small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+.row
+  .large-5.columns
+    %blockquote
+      %h4
+        Reason
+        %small The reason the punishment was issued.
+      = @punishment.reason
+  .large-5.columns
+    %blockquote
+      %h4
+        Type
+        %small The type of punishment.
+      = @punishment.type.capitalize
+.row
+  .large-5.columns
+    %blockquote
+      %h4
+        Punisher
+        %small The person who issued the punishment.
+      = @punishment.punisher
+  .large-5.columns
+    %blockquote
+      %h4
+        Punished
+        %small The victim of the punishment.
+      = @punishment.punished
+.row
+  .large-5.columns
+    %blockquote
+      %h4
+        Expiration Date
+        %small The date the punishmemt will expire.
+      - if @punishment.expires?
+        = @punishment.expires
+      - else
+        Never
+  .large-5.columns
+    %blockquote
+      %h4
+        Created
+        %small The date the punishment was created.
+      = time_ago_in_words(@punishment.created) + " ago"
+.row
+  .large-5.columns
+    %blockquote
+      %h4
+        Active
+        %small If the punishment is still in effect
+      = @punishment.active
+  .large-5.columns
+    %blockquote
+      %h4
+        Appealable
+        %small If the punishment can be appealed.
+      = @punishment.appealable

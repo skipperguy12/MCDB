@@ -1,35 +1,49 @@
-%h1 Listing punishments
-
-%table
-  %tr
-    %th Reason
-    %th Created
-    %th Expires
-    %th Type
-    %th Punisher
-    %th Punished
-    %th Appealable
-    %th Cluster
-    %th Active
-    %th
-    %th
-    %th
-
-  - @punishments.each do |punishment|
-    %tr
-      %td= punishment.reason
-      %td= punishment.created
-      %td= punishment.expires
-      %td= punishment.type
-      %td= punishment.punisher
-      %td= punishment.punished
-      %td= punishment.appealable
-      %td= punishment.cluster
-      %td= punishment.active
-      %td= link_to 'Show', punishment
-      %td= link_to 'Edit', edit_punishment_path(punishment)
-      %td= link_to 'Destroy', punishment, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Punishment', new_punishment_path
+.row
+  .large-5.columns.large-centered
+    %h3
+      %i.fi-list
+        Listing Punishments
+  .large-5.columns.end.large-centered
+    %ul.button-group
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+.row
+  %blockquote
+    Punishments are created in-game and apply to all servers in that cluster.
+.row
+  %table
+    %thead
+      %tr
+        %th{width: "125"}= "Punisher"
+        %th{width: "125"}= "Punished"
+        %th{width: "255"}= "Reason"
+        %th{width: "50"}= "Type"
+        %th{width: "125"}= "When"
+        %th{width: "125"}= "Expires"
+        %th{width: "100"}= "Server"
+        -if mcdb_user && mcdb_user.admin
+          %th= "Edit"
+    %tbody
+      - @punishments.each do |punishment|
+        %tr
+          %td= punishment.punisher
+          %td= punishment.punished
+          %td= punishment.reason
+          %td{:style=>'color:' + punishment.reason_color + ';' }= punishment.type
+          %td
+            - if punishment.created?
+              = time_ago_in_words(punishment.created) + " ago"
+          - if punishment.type == "warn"
+            %td
+          - elsif punishment.type == "permanent ban"
+            %td Never
+          - else
+            %td= punishment.expires
+          %td
+            -if punishment.server?
+              = McDb::Server.find(punishment.server).name
+            -else
+              Web
+          -if mcdb_user && mcdb_user.admin
+            %td= link_to "Edit", punishment_path(punishment)
+  .span6.offset4.text-center= paginate(@punishments)
+  %br

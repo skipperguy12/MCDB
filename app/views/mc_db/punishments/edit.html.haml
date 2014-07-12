@@ -1,7 +1,72 @@
-%h1 Editing punishment
-
-= render 'form'
-
-= link_to 'Show', @punishment
-\|
-= link_to 'Back', punishments_path
+= form_for @punishment do |f|
+  .row
+    .large-6.columns.large-centered
+      %h3
+        %i.fi-pencil
+          Editing #{@punishment.punished}'s punishment
+    .large-6.columns.end.large-centered
+      %ul.button-group
+        %li
+          = button_tag(type: 'submit', class: "button success small") do
+            %i.fi-check.large
+            Save
+        %li= link_to  '<i class="fi-eye large"></i> Show'.html_safe, @punishment, :class => "button small"
+        %li= link_to  '<i class="fi-trash large"></i> Delete'.html_safe, @punishment, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "button alert small"
+        %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+  .row
+    %blockquote
+      Punishments are created in-game and apply only in-game. You can list a user's punishments in-game by typing <kbd>/lookup player</kbd>. Any changes you make here will effect the servers in that cluster imdeiatly. Make sure all the details are right before saving. Only edit punishments you have issued or have been given permission to edit.
+  - if @punishment.errors.any?
+    .row
+      %blockquote
+        %h2= "#{pluralize(@cluster.errors.count, "error")}:"
+        - @punishment.errors.full_messages.each do |msg|
+          = msg
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Reason
+            %h6.subheading The reason the punishment was issued. Please be precise.
+            = f.text_field :reason
+      .large-5.columns
+        %h4
+          %blockquote
+            Type
+            %h6.subheading The type of the punishment. Set to ban then set expires to never for permanent ban.
+            = f.select :type, %w(warn kick ban)
+    .row
+      .large-5.columns
+        %h4
+          %blockquote
+            Punisher
+            %h6.subheading The person who issued the punishment, capitals matter.
+            = f.text_field :punisher
+      .large-5.columns
+        %h4
+          %blockquote
+            Punished
+            %h6.subheading The victim of the punishment, capitals matter.
+            = f.text_field :punisher
+    .row
+      .large-5.columns
+        %h4
+          %blockquote
+            Expiration Date
+            %h6.subheading The date the punishment will expire. Never for permanent ban.
+            = f.select :expires, @expires
+      .large-3.columns
+        %h4
+          %blockquote
+            Appealable
+            %h6.subheading If the punishment is appealable.
+            Appealable
+            = f.check_box :appealable
+      .large-3.columns
+        %h4
+          %blockquote
+            Active
+            %h6.subheading If the punishment is still in effect.
+            Active
+            = f.check_box :active

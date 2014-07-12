@@ -6,7 +6,7 @@ module McDb
 
     # GET /punishments
     def index
-      @punishments = Punishment.all
+      @punishments = Punishment.all.page(params[:page])
     end
 
     # GET /punishments/1
@@ -20,6 +20,14 @@ module McDb
 
     # GET /punishments/1/edit
     def edit
+      @expires = Hash.new
+      @punishment.expires = Time.at(0) if @punishment.expires == nil
+      @original = (@punishment.expires.mjd - @punishment.created.mjd).to_i # 7
+      @days_left = (@punishment.expires.mjd - DateTime.now.mjd).to_i # 5
+      @expires.merge!({"Never - Permanent ban" => nil})
+      60.downto(-60) do |n|
+        @expires.merge!({n.to_s + " day" + (n == 1 ? "" : "s") + " from now - " + (n - @days_left + @original).to_s + " day ban" => @punishment.expires - (@days_left - n).days})
+      end
     end
 
     # POST /punishments
