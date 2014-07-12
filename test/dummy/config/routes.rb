@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   # We ask that you don't use the :as option here, as McDb relies on it being the default of "mcdb"
   mount McDb::Engine, :at => '/admin'
 
-
+  devise_for :users
+  resources :users
 end
