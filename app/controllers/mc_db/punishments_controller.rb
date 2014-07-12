@@ -14,9 +14,12 @@ module McDb
     end
 
     # GET /punishments/new
-    def new
-      @punishment = Punishment.new
-    end
+    #
+    # Creation in-game only for now
+    #def new
+    #  @punishment = Punishment.new
+    #end
+    #
 
     # GET /punishments/1/edit
     def edit
@@ -31,15 +34,15 @@ module McDb
     end
 
     # POST /punishments
-    def create
-      @punishment = Punishment.new(punishment_params)
-
-      if @punishment.save
-        redirect_to @punishment, notice: 'Punishment was successfully created.'
-      else
-        render :new
-      end
-    end
+    #def create
+    #  @punishment = Punishment.new(punishment_params)
+    #
+    #  if @punishment.save
+    #    redirect_to @punishment, notice: 'Punishment was successfully created.'
+    #  else
+    #    render :new
+    #  end
+    #end
 
     # PATCH/PUT /punishments/1
     def update
