@@ -5,10 +5,9 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
     %title
       - if content_for? :title
-        Altitude MapDev &raquo; #{yield :title}
+        Dummy App &raquo; #{yield :title}
       - else
-        Altitude MapDev &raquo; The best MapDev server
-    = favicon_link_tag image_path('favicon.ico'), :rel => 'shortcut icon'
+        Aummy App [Missing Tittle]
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
