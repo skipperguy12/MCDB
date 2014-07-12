@@ -1,19 +1,31 @@
-%h1 Listing clusters
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @clusters.each do |cluster|
-    %tr
-      %td= cluster.name
-      %td= link_to 'Show', cluster
-      %td= link_to 'Edit', edit_cluster_path(cluster)
-      %td= link_to 'Destroy', cluster, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Cluster', new_cluster_path
+.row
+  .large-5.columns.large-centered
+    %h3
+      %i.fi-list
+        Listing Clusters
+  .large-5.columns.end.large-centered
+    %ul.button-group
+      %li= link_to '<i class="fi-plus large"></i> New Cluster'.html_safe, new_cluster_path, :class => "button small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+.row
+  %blockquote
+    Clusters are groups of things that allow the database to store multiple sets of groups, servers, punishments, reports, etc.
+    Examples: "hub" "normal" "tournament".
+    Clusters do not cross over. You can specify "all" as a cluster option and it will be respected as such. You do not need to add "all" here, it's hard-coded.
+.row
+  .large-11.columns.large-centered
+    %table
+      %thead
+        %tr
+          %th{width: "1000"} Name
+          %th Show
+          %th Edit
+          %th Delete
+      %tbody
+        - @clusters.each do |cluster|
+          %tr
+            %td= cluster.name
+            %td= link_to 'Show', cluster
+            %td= link_to 'Edit', edit_cluster_path(cluster)
+            %td= link_to 'Destroy', cluster, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br

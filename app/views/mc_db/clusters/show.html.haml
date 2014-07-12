@@ -1,9 +1,18 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @cluster.name
-
-= link_to 'Edit', edit_cluster_path(@cluster)
-\|
-= link_to 'Back', clusters_path
+.row
+  .large-6.columns.large-centered
+    %h3
+      %i.fi-eye
+        Viewing "#{@cluster.name}"
+  .large-6.columns.end.large-centered
+    %ul.button-group
+      %li= link_to  '<i class="fi-pencil large"></i> Edit'.html_safe, edit_cluster_path(@cluster), :class => "button small"
+      %li= link_to  '<i class="fi-trash large"></i> Delete'.html_safe, @cluster, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "button alert small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+.row
+  .field
+    .large-5.columns
+      %blockquote
+        %h4
+          Name
+          %small The name of the cluster.
+        = @cluster.name
