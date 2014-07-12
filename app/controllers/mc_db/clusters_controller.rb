@@ -27,7 +27,7 @@ module McDb
       @cluster = Cluster.new(cluster_params)
 
       if @cluster.save
-        redirect_to @cluster, notice: 'Cluster was successfully created.'
+        redirect_to @cluster, success: 'Cluster was successfully created.'
       else
         render :new
       end
@@ -36,7 +36,7 @@ module McDb
     # PATCH/PUT /clusters/1
     def update
       if @cluster.update(cluster_params)
-        redirect_to @cluster, notice: 'Cluster was successfully updated.'
+        redirect_to @cluster, success: 'Cluster was successfully updated.'
       else
         render :edit
       end

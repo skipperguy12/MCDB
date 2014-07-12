@@ -27,7 +27,7 @@ module McDb
       @report = Report.new(report_params)
 
       if @report.save
-        redirect_to @report, notice: 'Report was successfully created.'
+        redirect_to @report, success: 'Report was successfully created.'
       else
         render :new
       end
@@ -36,7 +36,7 @@ module McDb
     # PATCH/PUT /reports/1
     def update
       if @report.update(report_params)
-        redirect_to @report, notice: 'Report was successfully updated.'
+        redirect_to @report, success: 'Report was successfully updated.'
       else
         render :edit
       end

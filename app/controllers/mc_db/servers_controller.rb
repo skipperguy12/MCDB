@@ -27,7 +27,7 @@ module McDb
       @server = Server.new(server_params)
 
       if @server.save
-        redirect_to @server, notice: 'Server was successfully created.'
+        redirect_to @server, success: 'Server was successfully created.'
       else
         render :new
       end
@@ -36,7 +36,7 @@ module McDb
     # PATCH/PUT /servers/1
     def update
       if @server.update(server_params)
-        redirect_to @server, notice: 'Server was successfully updated.'
+        redirect_to @server, success: 'Server was successfully updated.'
       else
         render :edit
       end

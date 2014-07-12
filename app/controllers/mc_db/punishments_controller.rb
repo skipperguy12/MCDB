@@ -47,7 +47,7 @@ module McDb
     # PATCH/PUT /punishments/1
     def update
       if @punishment.update(punishment_params)
-        redirect_to @punishment, notice: 'Punishment was successfully updated.'
+        redirect_to @punishment, success: 'Punishment was successfully updated.'
       else
         render :edit
       end

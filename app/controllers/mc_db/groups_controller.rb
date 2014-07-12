@@ -27,7 +27,7 @@ module McDb
       @group = Group.new(group_params)
 
       if @group.save
-        redirect_to @group, notice: 'Group was successfully created.'
+        redirect_to @group, success: 'Group was successfully created.'
       else
         render :new
       end
@@ -36,7 +36,7 @@ module McDb
     # PATCH/PUT /groups/1
     def update
       if @group.update(group_params)
-        redirect_to @group, notice: 'Group was successfully updated.'
+        redirect_to @group, success: 'Group was successfully updated.'
       else
         render :edit
       end
