@@ -53,21 +53,39 @@ module McDb
         if File.exists?(path)
           puts "Skipping config/initializers/mcdb_webperms.rb creation, as file already exists!"
           puts "NOTE: If you are upgrading to a new gem version some permissions might have changed, we can make a backup of your old permissions and add the default ones just in case."
-          result = ask("What is your user class called? [User]").presence ||
+          result = ask("Proceed? [No]").presence ||
           false
           if result
               puts "Making a backup of your current permissions..."
               copy_file path, backup_path
               puts "Addming defaukt permissions..."
               template "webperms.rb", path
-            #  require path # Load the configuration per issue #415
           end
         else
           puts "Adding default McDb web permissions (config/initializers/mcdb/webperms.rb)..."
           puts "Default website permissions are stored here, feel free to edit them to suit your needs."
           template "webperms.rb", path
-        #  require path # Load the configuration per issue #415
         end
+      end
+
+      def add_default_settings
+        addedSettingsMessage = "\nAdded the following default settings:"
+        [
+          {:name => "Test", :values => %w(on off), :default => "on", :player => false, :description => 'Hi.', :cluster => "all"},
+          {:name => "Test2", :values => %w(on off), :default => "on", :player => false, :description => 'Hi!', :cluster => "all"}
+        ].each do |setting|
+          s = Setting.new
+          s.name = setting[:name]
+          s.values = setting[:values]
+          s.defValue = setting[:default]
+          s.isPlayerSetting = setting[:player]
+          s.description = setting[:description]
+          s.cluster = setting[:cluster]
+          s.save
+          addedSettingsMessage += "\n#{setting[:name]} - #{setting[:description]}"
+        end
+        addedSettingsMessage += "\n\n"
+        puts addedSettingsMessage
       end
 
       def mount_engine
