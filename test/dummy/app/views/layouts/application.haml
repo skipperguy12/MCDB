@@ -13,6 +13,78 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     %body
+      %nav.top-bar{"data-topbar" => ""}
+        %ul.title-area
+          / Title Area
+          %li.name
+          / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+          %li.toggle-topbar.menu-icon
+            %a{href: ""}
+              %span Menu
+        %section.top-bar-section
+          %ul.left
+            %li.has-dropdown.not-click
+              %a{href: "#"} Item 1
+              %ul.dropdown
+                %li.title.back.js-generated
+                  %h5
+                    %a{href: "javascript:void(0)"} Back
+                %li
+                  %label Level One
+                %li
+                  %a{href: "#"} Sub-item 1
+                %li
+                  %a{href: "#"} Sub-item 2
+                %li.divider
+                %li
+                  %a{href: "#"} Sub-item 3
+                %li.has-dropdown.not-click
+                  %a{href: "#"} Sub-item 4
+                  %ul.dropdown
+                    %li.title.back.js-generated
+                      %h5
+                        %a{href: "javascript:void(0)"} Back
+                    %li
+                      %label Level Two
+                    %li.has-dropdown.not-click
+                      %a{href: "#"} Sub-item 1
+                      %ul.dropdown
+                        %li.title.back.js-generated
+                          %h5
+                            %a{href: "javascript:void(0)"} Back
+                        %li
+                          %label Level Three
+                        %li.has-dropdown.not-click
+                          %a{href: "#"} Sub-item 1
+                          %ul.dropdown
+                            %li.title.back.js-generated
+                              %h5
+                                %a{href: "javascript:void(0)"} Back
+                            %li
+                              %label Level Four
+                            %li
+                              %a{href: "#"} Sub-item 1
+                        %li
+                          %a{href: "#"} Sub-item 2
+                        %li
+                          %a{href: "#"} Sub-item 3
+                        %li.divider
+                        %li
+                          %a{href: "#"} Sub-item 4
+                    %li
+                      %a{href: "#"} Sub-item 2
+                    %li
+                      %a{href: "#"} Sub-item 3
+                    %li
+                      %a{href: "#"} Sub-item 4
+                %li
+                  %a{href: "#"} Sub-item 5
+            %li.divider
+          / Right Nav Section
+          %ul.right
+            %li.divider
+            %li
+              %a{href: "#"} Item 2
       %br
       = yield
     = javascript_include_tag "application"
@@ -20,4 +92,4 @@
 .row
   %hr
   %dl.sub-nav
-    %dt &copy; 2014 Altitude Network
+    %dt &copy; 2014 Dummy Content
