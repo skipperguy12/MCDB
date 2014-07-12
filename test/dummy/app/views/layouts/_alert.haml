@@ -1,0 +1,5 @@
+- flash.each do |type, message|
+  .row
+    %div{:class => "alert-box #{foundation_class_for(type)}", "data-alert" => ""}
+      %a.close{href: "#"} ×
+      = message

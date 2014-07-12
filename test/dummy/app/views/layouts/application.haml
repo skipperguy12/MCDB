@@ -85,6 +85,8 @@
             %li
               %a{href: "#"} Item 2
       %br
+      = render partial: '/layouts/alert'
+      %br
       = yield
     = javascript_include_tag "application"
 
