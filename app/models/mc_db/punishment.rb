@@ -1,28 +1,17 @@
 module McDb
   class Punishment
     include Mongoid::Document
-    include Mongoid::Timestamps
+    store_in collection: "dndb_punishments", database: "dndb_punishments"
+    field :punisher, type: UUID
+    field :punished, type: UUID
     field :reason, type: String
-    field :created, type: DateTime
-    field :expires, type: DateTime
+    field :server, type: BSON::ObjectId
     field :type, type: String
-    field :punisher, type: String
-    field :punished, type: String
-    field :appealable, type: Mongoid::Boolean
-    field :cluster, type: String
+    field :cluster, type: BSON::ObjectId
     field :active, type: Mongoid::Boolean
-    field :server, type: String
-
-    def reason_color
-        if self.type == "warn"
-            "green"
-        elsif self.type == "kick"
-            "orange"
-        elsif self.type == "ban"
-            "red"
-        else
-            "black"
-        end
-    end
+    field :appealable, type: Mongoid::Boolean
+    field :automatic, type: Mongoid::Boolean
+    field :when, type: DateTime
+    field :expires, type: DateTime
   end
 end

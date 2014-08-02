@@ -2,7 +2,9 @@ require_dependency "mc_db/application_controller"
 
 module McDb
   class ServersController < ApplicationController
-    before_action :set_server, only: [:show, :edit, :update, :destroy]
+    before_action :set_server, only: [:show, :update, :destroy]
+    before_action :compile_cluster_list, only: [:show]
+    before_action :fix_cluster, only: [:show]
 
     # GET /servers
     def index
@@ -18,16 +20,12 @@ module McDb
       @server = Server.new
     end
 
-    # GET /servers/1/edit
-    def edit
-    end
-
     # POST /servers
     def create
       @server = Server.new(server_params)
 
       if @server.save
-        redirect_to @server, success: 'Server was successfully created.'
+        redirect_to @server, notice: 'Server was successfully created.'
       else
         render :new
       end
@@ -36,7 +34,7 @@ module McDb
     # PATCH/PUT /servers/1
     def update
       if @server.update(server_params)
-        redirect_to @server, success: 'Server was successfully updated.'
+        redirect_to @server, notice: 'Server was successfully updated.'
       else
         render :edit
       end
@@ -54,9 +52,20 @@ module McDb
         @server = Server.find(params[:id])
       end
 
+      def compile_cluster_list
+        @clusters = Array.new
+        Cluster.all.each do |cluster|
+          @clusters << cluster.name
+        end
+      end
+
+      def fix_cluster
+        @server.cluster = Cluster.where(:id => @server.cluster).first.name
+      end
+
       # Only allow a trusted parameter "white list" through.
       def server_params
-        params.require(:server).permit(:name, :ip, :port, :publicIp, :publicPort, :cluster, :maxPlayers, :onlinePlayers, :online)
+        params.require(:server).permit(:name, :address, :visibility, :internal_name, :internal_address, :port, :internal_port, :max_players, :uptime, :online_players, :online_staff, :online, :cluster)
       end
   end
 end

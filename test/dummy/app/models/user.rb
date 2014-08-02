@@ -1,5 +1,7 @@
 class User
     include Mongoid::Document
+    extend McDb::Autocomplete
+    store_in collection: "dndb_users", database: "dndb_users"
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
     field :email,              :type => String
@@ -26,6 +28,13 @@ class User
     field :unconfirmed_email,    :type => String
 
     field :admin, :type => Boolean, :default => false
+    field :uuid, :type => BSON::Binary
+    field :usernames, :type => Array, :default => []
+    field :last_username, :type => String
+    field :mc_sign_ins, :type => Integer
+    field :mc_last_sign_in, :type => DateTime
+    field :mc_first_sign_in, :type => DateTime
+    field :last_session, :type => BSON::ObjectId
 
     def password_match?
         self.errors[:password] << 'passwords do not match' if password != password_confirmation

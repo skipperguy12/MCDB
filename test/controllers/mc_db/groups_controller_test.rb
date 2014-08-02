@@ -19,7 +19,7 @@ module McDb
 
     test "should create group" do
       assert_difference('Group.count') do
-        post :create, group: { active: @group.active, cluster: @group.cluster, html_color: @group.html_color, members: @group.members, minecraft_permissions: @group.minecraft_permissions, name: @group.name, priority: @group.priority, staff: @group.staff, website_permissions: @group.website_permissions }
+        post :create, group: { cluster: @group.cluster, flair: @group.flair, flair_color: @group.flair_color, mc_permissions: @group.mc_permissions, members: @group.members, name: @group.name, priority: @group.priority, web_permissions: @group.web_permissions }
       end
 
       assert_redirected_to group_path(assigns(:group))
@@ -36,7 +36,7 @@ module McDb
     end
 
     test "should update group" do
-      patch :update, id: @group, group: { active: @group.active, cluster: @group.cluster, html_color: @group.html_color, members: @group.members, minecraft_permissions: @group.minecraft_permissions, name: @group.name, priority: @group.priority, staff: @group.staff, website_permissions: @group.website_permissions }
+      patch :update, id: @group, group: { cluster: @group.cluster, flair: @group.flair, flair_color: @group.flair_color, mc_permissions: @group.mc_permissions, members: @group.members, name: @group.name, priority: @group.priority, web_permissions: @group.web_permissions }
       assert_redirected_to group_path(assigns(:group))
     end
 

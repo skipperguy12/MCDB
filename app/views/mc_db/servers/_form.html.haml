@@ -5,33 +5,65 @@
       %ul
         - @server.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :ip
-    = f.text_field :ip
-  .field
-    = f.label :port
-    = f.number_field :port
-  .field
-    = f.label :publicIp
-    = f.text_field :publicIp
-  .field
-    = f.label :publicPort
-    = f.number_field :publicPort
-  .field
-    = f.label :cluster
-    = f.text_field :cluster
-  .field
-    = f.label :maxPlayers
-    = f.number_field :maxPlayers
-  .field
-    = f.label :onlinePlayers
-    = f.text_field :onlinePlayers
-  .field
-    = f.label :online
-    = f.check_box :online
-  .actions
-    = f.submit 'Save'
+  .row
+    = button_tag(type: 'submit', class: "button success small") do
+      %i.fi-check.large
+      Save
+  .row
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Name
+        = f.text_field :name
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Address
+        = f.text_field :address
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Port
+        = f.number_field :port
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Visibility
+        = f.select :visibility, %w(PUBLIC PRIVATE STAFF_ONLY)
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Cluster
+        = f.select :cluster, @clusters
+  .row
+    %h2 Internal Information
+  .row
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Name
+        = f.text_field :internal_name
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Address
+        = f.text_field :internal_address
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Port
+        = f.number_field :internal_port
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Max Players
+        = f.number_field :max_players

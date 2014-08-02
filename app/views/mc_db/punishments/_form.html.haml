@@ -1,0 +1,99 @@
+= form_for @punishment do |f|
+  - if @punishment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@punishment.errors.count, "error")} prohibited this punishment from being saved:"
+      %ul
+        - @punishment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Punisher
+            %h6.subheading Punisher
+        = f.text_field :punisher
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Punished
+            %h6.subheading Punished
+        = f.text_field :punished
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Reason
+            %h6.subheading Reason
+        = f.text_field :reason
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Server
+            %h6.subheading Server
+        = f.text_field :server
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Type
+            %h6.subheading Type
+        = f.text_field :type
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Cluster
+            %h6.subheading Cluster
+        = f.text_field :cluster
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Active
+            %h6.subheading Active
+        = f.check_box :active
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Appealable
+            %h6.subheading Appealable
+        = f.check_box :appealable
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Automatic
+            %h6.subheading Automatic
+        = f.check_box :automatic
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            When
+            %h6.subheading When
+        = f.text_field :when
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Expires
+            %h6.subheading Expires
+        = f.text_field :expires
+  = button_tag(type: 'submit', class: "button success small") do
+    %i.fi-check.large
+    Save

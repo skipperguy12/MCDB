@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server: 
+  start: 
+  end: 
+  length: 
+  user: 
+  ended_correctly: false
+  ended_with_punish: false
+  ip: 
+
+two:
+  server: 
+  start: 
+  end: 
+  length: 
+  user: 
+  ended_correctly: false
+  ended_with_punish: false
+  ip: 

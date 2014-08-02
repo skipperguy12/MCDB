@@ -1,0 +1,41 @@
+%h1 Listing servers
+
+%table
+  %tr
+    %th Name
+    %th Address
+    %th Visibility
+    %th Internal name
+    %th Internal address
+    %th Port
+    %th Internal port
+    %th Max players
+    %th Uptime
+    %th Online players
+    %th Online staff
+    %th Online
+    %th
+    %th
+    %th
+
+  - @servers.each do |server|
+    %tr
+      %td= server.name
+      %td= server.address
+      %td= server.visibility
+      %td= server.internal_name
+      %td= server.internal_address
+      %td= server.port
+      %td= server.internal_port
+      %td= server.max_players
+      %td= server.uptime
+      %td= server.online_players
+      %td= server.online_staff
+      %td= server.online
+      %td= link_to 'Show', server
+      %td= link_to 'Edit', edit_server_path(server)
+      %td= link_to 'Destroy', server, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Server', new_server_path

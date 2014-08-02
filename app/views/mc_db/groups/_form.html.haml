@@ -6,32 +6,87 @@
         - @group.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :cluster
-    = f.text_field :cluster
-  .field
-    = f.label :priority
-    = f.text_field :priority
-  .field
-    = f.label :members
-    = f.text_field :members
-  .field
-    = f.label :minecraft_permissions
-    = f.text_field :minecraft_permissions
-  .field
-    = f.label :website_permissions
-    = f.text_field :website_permissions
-  .field
-    = f.label :active
-    = f.check_box :active
-  .field
-    = f.label :staff
-    = f.check_box :staff
-  .field
-    = f.label :html_color
-    = f.text_field :html_color
-  .actions
-    = f.submit 'Save'
+  .row
+    = button_tag(type: 'submit', class: "button success small") do
+      %i.fi-check.large
+      Save
+
+  .row
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Name
+        = f.text_field :name
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Priority
+        = f.text_field :priority
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Cluster
+        = f.select :cluster, @clusters
+    .field
+      .large-2.columns
+        %h4
+          %blockquote
+            Flair
+        = f.text_field :flair
+    .field
+      .large-3.columns
+        %h4
+          %blockquote
+            Flair Color
+        = f.text_field :flair_color
+
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Minecraft Permissions
+        = f.text_area :mc_permissions, :rows => 10
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Web Permissions
+        .alert-box{"data-alert" => ""}
+          %h3{style: "color: white"} Coming Soon
+
+= form_tag (groups_path + '/' + @group.id + '/members') do
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Add Member
+        = text_field_tag "user_id", nil, :class => 'typeahead', :style => "width: 200px"
+        = submit_tag "Add Member", :class => "button small", :style => "margin-left: 12px"
+      .large-5.columns
+      %h3 Members:
+      - if @group.members
+        - memcount = -1
+        - @group.members.each do |mem|
+          - memcount += 1
+          = User.where(:id => mem).first.last_username
+          = link_to "Remove Member", groups_path + '/' + @group.id + '/members/' + memcount.to_s, method: :delete, data: { confirm: "Are You Sure?" }
+          %br
+:javascript
+  var engine = new Bloodhound({
+    name: 'animals',
+    remote: '#{autocomplete_path}?q=%QUERY',
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('user'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace
+  });
+
+  engine.initialize();
+
+  $('.typeahead').typeahead(null, {
+    displayKey: 'user',
+    source: engine.ttAdapter()
+  });

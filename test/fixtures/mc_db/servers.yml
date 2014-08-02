@@ -2,22 +2,28 @@
 
 one:
   name: MyString
-  ip: MyString
+  address: MyString
+  visibility: MyString
+  internal_name: MyString
+  internal_address: MyString
   port: 1
-  publicIp: MyString
-  publicPort: 1
-  cluster: MyString
-  maxPlayers: 1
-  onlinePlayers: 
+  internal_port: 1
+  max_players: 1
+  uptime: 
+  online_players: 
+  online_staff: 
   online: false
 
 two:
   name: MyString
-  ip: MyString
+  address: MyString
+  visibility: MyString
+  internal_name: MyString
+  internal_address: MyString
   port: 1
-  publicIp: MyString
-  publicPort: 1
-  cluster: MyString
-  maxPlayers: 1
-  onlinePlayers: 
+  internal_port: 1
+  max_players: 1
+  uptime: 
+  online_players: 
+  online_staff: 
   online: false

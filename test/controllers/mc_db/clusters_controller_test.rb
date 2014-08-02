@@ -19,7 +19,7 @@ module McDb
 
     test "should create cluster" do
       assert_difference('Cluster.count') do
-        post :create, cluster: { name: @cluster.name }
+        post :create, cluster: { name: @cluster.name, visibility: @cluster.visibility }
       end
 
       assert_redirected_to cluster_path(assigns(:cluster))
@@ -36,7 +36,7 @@ module McDb
     end
 
     test "should update cluster" do
-      patch :update, id: @cluster, cluster: { name: @cluster.name }
+      patch :update, id: @cluster, cluster: { name: @cluster.name, visibility: @cluster.visibility }
       assert_redirected_to cluster_path(assigns(:cluster))
     end
 

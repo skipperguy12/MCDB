@@ -6,7 +6,7 @@
 .row
   .large-2.columns
     %ul.side-nav
-      - %w{clusters groups punishments reports servers settings}.each do |panel|
+      - %w{clusters groups punishments servers}.each do |panel|
         %li
           = link_to panel.capitalize, root_path + "/" + panel
   .large-6.columns.end

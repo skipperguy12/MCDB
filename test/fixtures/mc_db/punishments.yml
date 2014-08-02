@@ -1,23 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  punisher: 
+  punished: 
   reason: MyString
-  created: 2014-07-07 03:19:49
-  expires: 2014-07-07 03:19:49
+  server: 
   type: 
-  punisher: MyString
-  punished: MyString
-  appealable: false
-  cluster: MyString
+  cluster: 
   active: false
+  appealable: false
+  automatic: false
+  when: 
+  expires: 
 
 two:
+  punisher: 
+  punished: 
   reason: MyString
-  created: 2014-07-07 03:19:49
-  expires: 2014-07-07 03:19:49
+  server: 
   type: 
-  punisher: MyString
-  punished: MyString
-  appealable: false
-  cluster: MyString
+  cluster: 
   active: false
+  appealable: false
+  automatic: false
+  when: 
+  expires: 

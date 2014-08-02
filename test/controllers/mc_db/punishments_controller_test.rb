@@ -19,7 +19,7 @@ module McDb
 
     test "should create punishment" do
       assert_difference('Punishment.count') do
-        post :create, punishment: { active: @punishment.active, appealable: @punishment.appealable, cluster: @punishment.cluster, created: @punishment.created, expires: @punishment.expires, punished: @punishment.punished, punisher: @punishment.punisher, reason: @punishment.reason, type: @punishment.type }
+        post :create, punishment: { active: @punishment.active, appealable: @punishment.appealable, automatic: @punishment.automatic, cluster: @punishment.cluster, expires: @punishment.expires, punished: @punishment.punished, punisher: @punishment.punisher, reason: @punishment.reason, server: @punishment.server, type: @punishment.type, when: @punishment.when }
       end
 
       assert_redirected_to punishment_path(assigns(:punishment))
@@ -36,7 +36,7 @@ module McDb
     end
 
     test "should update punishment" do
-      patch :update, id: @punishment, punishment: { active: @punishment.active, appealable: @punishment.appealable, cluster: @punishment.cluster, created: @punishment.created, expires: @punishment.expires, punished: @punishment.punished, punisher: @punishment.punisher, reason: @punishment.reason, type: @punishment.type }
+      patch :update, id: @punishment, punishment: { active: @punishment.active, appealable: @punishment.appealable, automatic: @punishment.automatic, cluster: @punishment.cluster, expires: @punishment.expires, punished: @punishment.punished, punisher: @punishment.punisher, reason: @punishment.reason, server: @punishment.server, type: @punishment.type, when: @punishment.when }
       assert_redirected_to punishment_path(assigns(:punishment))
     end
 

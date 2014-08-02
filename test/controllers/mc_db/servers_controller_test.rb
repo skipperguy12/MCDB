@@ -19,7 +19,7 @@ module McDb
 
     test "should create server" do
       assert_difference('Server.count') do
-        post :create, server: { cluster: @server.cluster, ip: @server.ip, maxPlayers: @server.maxPlayers, name: @server.name, online: @server.online, onlinePlayers: @server.onlinePlayers, port: @server.port, publicIp: @server.publicIp, publicPort: @server.publicPort }
+        post :create, server: { address: @server.address, internal_address: @server.internal_address, internal_name: @server.internal_name, internal_port: @server.internal_port, max_players: @server.max_players, name: @server.name, online: @server.online, online_players: @server.online_players, online_staff: @server.online_staff, port: @server.port, uptime: @server.uptime, visibility: @server.visibility }
       end
 
       assert_redirected_to server_path(assigns(:server))
@@ -36,7 +36,7 @@ module McDb
     end
 
     test "should update server" do
-      patch :update, id: @server, server: { cluster: @server.cluster, ip: @server.ip, maxPlayers: @server.maxPlayers, name: @server.name, online: @server.online, onlinePlayers: @server.onlinePlayers, port: @server.port, publicIp: @server.publicIp, publicPort: @server.publicPort }
+      patch :update, id: @server, server: { address: @server.address, internal_address: @server.internal_address, internal_name: @server.internal_name, internal_port: @server.internal_port, max_players: @server.max_players, name: @server.name, online: @server.online, online_players: @server.online_players, online_staff: @server.online_staff, port: @server.port, uptime: @server.uptime, visibility: @server.visibility }
       assert_redirected_to server_path(assigns(:server))
     end
 

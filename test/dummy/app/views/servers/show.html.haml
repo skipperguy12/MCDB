@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @server.name
+%p
+  %b Address:
+  = @server.address
+%p
+  %b Visibility:
+  = @server.visibility
+%p
+  %b Internal name:
+  = @server.internal_name
+%p
+  %b Internal address:
+  = @server.internal_address
+%p
+  %b Port:
+  = @server.port
+%p
+  %b Internal port:
+  = @server.internal_port
+%p
+  %b Max players:
+  = @server.max_players
+%p
+  %b Uptime:
+  = @server.uptime
+%p
+  %b Online players:
+  = @server.online_players
+%p
+  %b Online staff:
+  = @server.online_staff
+%p
+  %b Online:
+  = @server.online
+
+= link_to 'Edit', edit_server_path(@server)
+\|
+= link_to 'Back', servers_path

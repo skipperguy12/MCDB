@@ -1,0 +1,25 @@
+= form_for @cluster do |f|
+  - if @cluster.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cluster.errors.count, "error")} prohibited this cluster from being saved:"
+      %ul
+        - @cluster.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    = button_tag(type: 'submit', class: "button success small") do
+      %i.fi-check.large
+      Save
+  .row
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Name
+        = f.text_field :name
+    .field
+      .large-5.columns
+        %h4
+          %blockquote
+            Visibility
+        = f.select :visibility, %w(PUBLIC PRIVATE STAFF_ONLY)

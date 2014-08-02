@@ -1,0 +1,46 @@
+= form_for @server do |f|
+  - if @server.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@server.errors.count, "error")} prohibited this server from being saved:"
+      %ul
+        - @server.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :visibility
+    = f.text_field :visibility
+  .field
+    = f.label :internal_name
+    = f.text_field :internal_name
+  .field
+    = f.label :internal_address
+    = f.text_field :internal_address
+  .field
+    = f.label :port
+    = f.number_field :port
+  .field
+    = f.label :internal_port
+    = f.number_field :internal_port
+  .field
+    = f.label :max_players
+    = f.number_field :max_players
+  .field
+    = f.label :uptime
+    = f.text_field :uptime
+  .field
+    = f.label :online_players
+    = f.text_field :online_players
+  .field
+    = f.label :online_staff
+    = f.text_field :online_staff
+  .field
+    = f.label :online
+    = f.check_box :online
+  .actions
+    = f.submit 'Save'

@@ -10,6 +10,7 @@
         Aummy App [Missing Tittle]
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
     = csrf_meta_tags
     %body
       %nav.top-bar{"data-topbar" => ""}
@@ -88,7 +89,6 @@
       = render partial: '/layouts/alert'
       %br
       = yield
-    = javascript_include_tag "application"
 
 .row
   %hr

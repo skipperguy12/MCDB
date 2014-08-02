@@ -1,35 +1,29 @@
-%h1 Listing groups
+- content_for :title, "Admin - Groups - Index"
+.row
+  .large-5.columns.large-centered
+    %h3
+      %i.fi-list
+        Listing Groups
+  .large-5.columns.end.large-centered
+    %ul.button-group
+      %li= link_to '<i class="fi-plus large"></i> New Group'.html_safe, new_group_path, :class => "button small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
 
-%table
-  %tr
-    %th Name
-    %th Cluster
-    %th Priority
-    %th Members
-    %th Minecraft permissions
-    %th Website permissions
-    %th Active
-    %th Staff
-    %th Html color
-    %th
-    %th
-    %th
+.row
+  .large-11.columns.large-centered
+    %table
+      %thead
+        %tr
+          %th{width: "300px"} Name
+          %th{width: "40px"} Priority
+          %th{width: "250px"} Cluster
+          %th Edit
+          %th Delete
 
-  - @groups.each do |group|
-    %tr
-      %td= group.name
-      %td= group.cluster
-      %td= group.priority
-      %td= group.members
-      %td= group.minecraft_permissions
-      %td= group.website_permissions
-      %td= group.active
-      %td= group.staff
-      %td= group.html_color
-      %td= link_to 'Show', group
-      %td= link_to 'Edit', edit_group_path(group)
-      %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Group', new_group_path
+        - @groups.each do |group|
+          %tr
+            %td= group.name
+            %td= group.priority
+            %td= McDb::Cluster.where(:id => group.cluster).first.name
+            %td= link_to 'Edit', group
+            %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }

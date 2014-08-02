@@ -2,22 +2,20 @@
 
 one:
   name: MyString
-  cluster: MyString
-  priority: MyString
+  flair: MyString
+  flair_color: MyString
+  priority: 
   members: 
-  minecraft_permissions: 
-  website_permissions: 
-  active: false
-  staff: false
-  html_color: MyString
+  mc_permissions: 
+  cluster: 
+  web_permissions: 
 
 two:
   name: MyString
-  cluster: MyString
-  priority: MyString
+  flair: MyString
+  flair_color: MyString
+  priority: 
   members: 
-  minecraft_permissions: 
-  website_permissions: 
-  active: false
-  staff: false
-  html_color: MyString
+  mc_permissions: 
+  cluster: 
+  web_permissions: 

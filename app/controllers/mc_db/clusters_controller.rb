@@ -2,7 +2,7 @@ require_dependency "mc_db/application_controller"
 
 module McDb
   class ClustersController < ApplicationController
-    before_action :set_cluster, only: [:show, :edit, :update, :destroy]
+    before_action :set_cluster, only: [:show, :update, :destroy]
 
     # GET /clusters
     def index
@@ -18,16 +18,12 @@ module McDb
       @cluster = Cluster.new
     end
 
-    # GET /clusters/1/edit
-    def edit
-    end
-
     # POST /clusters
     def create
       @cluster = Cluster.new(cluster_params)
 
       if @cluster.save
-        redirect_to @cluster, success: 'Cluster was successfully created.'
+        redirect_to @cluster, notice: 'Cluster was successfully created.'
       else
         render :new
       end
@@ -36,9 +32,9 @@ module McDb
     # PATCH/PUT /clusters/1
     def update
       if @cluster.update(cluster_params)
-        redirect_to @cluster, success: 'Cluster was successfully updated.'
+        redirect_to @cluster, notice: 'Cluster was successfully updated.'
       else
-        render :edit
+        render :show
       end
     end
 
@@ -56,7 +52,7 @@ module McDb
 
       # Only allow a trusted parameter "white list" through.
       def cluster_params
-        params.require(:cluster).permit(:name)
+        params.require(:cluster).permit(:name, :visibility)
       end
   end
 end

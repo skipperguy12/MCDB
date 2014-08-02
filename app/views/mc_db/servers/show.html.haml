@@ -1,33 +1,12 @@
-%p#notice= notice
+- content_for :title, "Admin - Servers - Edit"
+.row
+  .large-6.columns.large-centered
+    %h3
+      %i.fi-pencil
+        Edit "#{@server.name}"
+  .large-6.columns.end.large-centered
+    %ul.button-group
+      %li= link_to  '<i class="fi-trash large"></i> Delete'.html_safe, @server, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "button alert small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
 
-%p
-  %b Name:
-  = @server.name
-%p
-  %b Ip:
-  = @server.ip
-%p
-  %b Port:
-  = @server.port
-%p
-  %b Publicip:
-  = @server.publicIp
-%p
-  %b Publicport:
-  = @server.publicPort
-%p
-  %b Cluster:
-  = @server.cluster
-%p
-  %b Maxplayers:
-  = @server.maxPlayers
-%p
-  %b Onlineplayers:
-  = @server.onlinePlayers
-%p
-  %b Online:
-  = @server.online
-
-= link_to 'Edit', edit_server_path(@server)
-\|
-= link_to 'Back', servers_path
+= render 'form'

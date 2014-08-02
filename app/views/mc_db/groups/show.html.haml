@@ -1,33 +1,12 @@
-%p#notice= notice
+- content_for :title, "Admin - Groups - Show"
+.row
+  .large-6.columns.large-centered
+    %h3
+      %i.fi-eye
+        Editing "#{@group.name}"
+  .large-6.columns.end.large-centered
+    %ul.button-group
+      %li= link_to  '<i class="fi-trash large"></i> Delete'.html_safe, @group, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "button alert small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
 
-%p
-  %b Name:
-  = @group.name
-%p
-  %b Cluster:
-  = @group.cluster
-%p
-  %b Priority:
-  = @group.priority
-%p
-  %b Members:
-  = @group.members
-%p
-  %b Minecraft permissions:
-  = @group.minecraft_permissions
-%p
-  %b Website permissions:
-  = @group.website_permissions
-%p
-  %b Active:
-  = @group.active
-%p
-  %b Staff:
-  = @group.staff
-%p
-  %b Html color:
-  = @group.html_color
-
-= link_to 'Edit', edit_group_path(@group)
-\|
-= link_to 'Back', groups_path
+= render "form"
