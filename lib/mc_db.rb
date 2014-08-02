@@ -1,7 +1,7 @@
 require "mc_db/engine"
 
 module McDb
-  mattr_accessor :base_path, :user_class
+  mattr_accessor :base_path, :user_class, :website_permissions
 
   class << self
     def base_path
