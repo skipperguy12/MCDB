@@ -68,26 +68,6 @@ module McDb
         end
       end
 
-      def add_default_settings
-        addedSettingsMessage = "\nAdded the following default settings:"
-        [
-          {:name => "Test", :values => %w(on off), :default => "on", :player => false, :description => 'Hi.', :cluster => "all"},
-          {:name => "Test2", :values => %w(on off), :default => "on", :player => false, :description => 'Hi!', :cluster => "all"}
-        ].each do |setting|
-          s = Setting.new
-          s.name = setting[:name]
-          s.values = setting[:values]
-          s.defValue = setting[:default]
-          s.isPlayerSetting = setting[:player]
-          s.description = setting[:description]
-          s.cluster = setting[:cluster]
-          s.save
-          addedSettingsMessage += "\n#{setting[:name]} - #{setting[:description]}"
-        end
-        addedSettingsMessage += "\n\n"
-        puts addedSettingsMessage
-      end
-
       def mount_engine
         puts "Mounting McDb::Engine at \"/admin\" in config/routes.rb..."
         insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
