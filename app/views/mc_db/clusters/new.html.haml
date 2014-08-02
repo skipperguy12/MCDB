@@ -1,0 +1,11 @@
+- content_for :title, "Admin - Clusters - New"
+.row
+  .large-4.columns.large-centered
+    %h3
+      %i.fi-plus
+        Create Cluster
+  .large-4.columns.end.large-centered
+    %ul.button-group
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+
+= render 'form'

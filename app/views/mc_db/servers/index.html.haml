@@ -1,0 +1,45 @@
+- content_for :title, "Admin - Servers - Index"
+.row
+  .large-5.columns.large-centered
+    %h3
+      %i.fi-list
+        Listing Servers
+  .large-5.columns.end.large-centered
+    %ul.button-group
+      %li= link_to '<i class="fi-plus large"></i> New Server'.html_safe, new_server_path, :class => "button small"
+      %li= link_to  '<i class="fi-home large"></i> Panel Home'.html_safe, root_path, :class => "button small"
+
+.row
+  .large-11.columns.large-centered
+    %table
+      %thead
+        %tr
+          %th{width: "150px"} Name
+          %th{width: "150px"} Address
+          %th Uptime
+          %th # Players
+          %th Max Players
+          %th # Staff
+          %th{width: "50px"} Edit
+          %th{width: "50px"} Delete
+
+        - @servers.each do |server|
+          %tr
+            %td= server.name
+            %td= server.address
+            - if server.online
+              %td= time_ago_in_words(server.start)
+            - else
+              %td
+                %span.alert.label Offline
+            - unless server.online_players
+              %td 0
+            - else
+              %td= server.online_players.size
+            %td= server.max_players
+            - unless server.online_staff
+              %td 0
+            - else
+              %td= server.online_staff.size
+            %td= link_to 'Edit', server
+            %td= link_to 'Destroy', server, :method => :delete, :data => { :confirm => 'Are you sure?' }
