@@ -10,6 +10,7 @@ module McDb
     field :mc_permissions
     field :cluster, type: BSON::ObjectId
     field :web_permissions, type: Array
+    field :give_to_new, type: Boolean
 
     before_save :fix_perms
     before_save :fix_cluster

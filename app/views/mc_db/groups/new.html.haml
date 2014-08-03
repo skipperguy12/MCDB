@@ -20,6 +20,10 @@
     = button_tag(type: 'submit', class: "button success small") do
       %i.fi-check.large
       Save
+  .row
+    .large-5.columns
+      = f.check_box :give_to_new
+      %label{:for => "group_give_to_new"} Default group (Give to all new/exisiting players).
 
   .row
     .field

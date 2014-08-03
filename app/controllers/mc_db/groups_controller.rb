@@ -68,7 +68,7 @@ module McDb
 
       # Only allow a trusted parameter "white list" through.
       def group_params
-        params.require(:group).permit(:name, :flair, :flair_color, :priority, :members, :mc_permissions, :cluster, :web_permissions)
+        params.require(:group).permit(:name, :flair, :flair_color, :priority, :members, :mc_permissions, :cluster, :web_permissions, :give_to_new)
       end
   end
 end
