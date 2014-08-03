@@ -70,14 +70,15 @@
             Add Member
         = text_field_tag "user_id", nil, :class => 'typeahead', :style => "width: 200px"
         = submit_tag "Add Member", :class => "button small", :style => "margin-left: 12px"
-      .large-5.columns
+    .large-4.columns
       %h3 Members:
       - if @group.members
         - memcount = -1
         - @group.members.each do |mem|
           - memcount += 1
           = User.where(:id => mem).first.last_username
-          = link_to "Remove Member", groups_path + '/' + @group.id + '/members/' + memcount.to_s, method: :delete, data: { confirm: "Are You Sure?" }
+          .right= link_to "X", groups_path + '/' + @group.id + '/members/' + memcount.to_s, method: :delete, data: { confirm: "Are You Sure?" }
+          %br
           %br
 :javascript
   var engine = new Bloodhound({
