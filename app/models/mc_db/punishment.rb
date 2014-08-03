@@ -2,8 +2,8 @@ module McDb
   class Punishment
     include Mongoid::Document
     store_in collection: "dndb_punishments", database: "dndb_punishments"
-    field :punisher, type: UUID
-    field :punished, type: UUID
+    field :punisher, type: BSON::ObjectId
+    field :punished, type: BSON::ObjectId
     field :reason, type: String
     field :server, type: BSON::ObjectId
     field :type, type: String
