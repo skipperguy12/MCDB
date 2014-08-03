@@ -20,7 +20,7 @@
 
       def authenticate_user
         unless current_user && current_user.admin?
-            rendirect_to main_app.root_path, error: "You do not have permission to view this page!"
+            redirect_to main_app.root_path, error: "You do not have permission to view this page!"
         end
       end
 
