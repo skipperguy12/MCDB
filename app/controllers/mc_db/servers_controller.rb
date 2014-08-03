@@ -3,7 +3,7 @@ require_dependency "mc_db/application_controller"
 module McDb
   class ServersController < ApplicationController
     before_action :set_server, only: [:show, :update, :destroy]
-    before_action :compile_cluster_list, only: [:show]
+    before_action :compile_cluster_list, only: [:show, :index, :new]
     before_action :fix_cluster, only: [:show]
 
     # GET /servers
@@ -54,13 +54,13 @@ module McDb
 
       def compile_cluster_list
         @clusters = Array.new
-        Cluster.all.each do |cluster|
+        McDb::Cluster.all.each do |cluster|
           @clusters << cluster.name
         end
       end
 
       def fix_cluster
-        @server.cluster = Cluster.where(:id => @server.cluster).first.name
+        @server.cluster = McDb::Cluster.where(:id => @server.cluster).first.name
       end
 
       # Only allow a trusted parameter "white list" through.
