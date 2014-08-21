@@ -14,6 +14,9 @@
     .large-5.columns
       = f.check_box :give_to_new
       %label{:for => "group_give_to_new"} Default group (Give to all new/exisiting players).
+    .large-5.columns
+      = f.check_box :is_staff
+      %label{:for => "group_is_staff"} If the group is a staff-specific group.
   .row
     .field
       .large-3.columns

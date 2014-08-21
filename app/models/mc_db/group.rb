@@ -8,6 +8,7 @@ module McDb
     field :priority, type: Integer
     field :members, type: Array, :default => []
     field :mc_permissions
+    field :is_staff
     field :cluster, type: BSON::ObjectId
     field :web_permissions, type: Array
     field :give_to_new, type: Boolean
